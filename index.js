@@ -21,9 +21,10 @@ app.listen(process.env.PORT || 1337, () => console.log('webhook is listening on 
 app.get('/getName', (req, res) => {
     res.status(200).send('AYUS  '+PAGE_ACCESS_TOKEN);
 });
-app.post('/facebook', (req, res) => {
 
-	 console.log(" IN POST ");
+
+app.post('/webhook', (req, res) => {
+
     // Parse the request body from the POST
     let body = req.body;
     try {
@@ -72,10 +73,10 @@ app.post('/facebook', (req, res) => {
 });
 
 // Adds support for GET requests to our webhook
-app.get('/facebook', (req, res) => {
+app.get('/webhook', (req, res) => {
 
     // Your verify token. Should be a random string.
-    let VERIFY_TOKEN = "innoeye"
+    let VERIFY_TOKEN = "<YOUR_VERIFY_TOKEN>"
 
     // Parse the query params
     let mode = req.query['hub.mode'];
@@ -175,6 +176,7 @@ function callSendAPI(sender_psid, response) {
     //s = 2361081954019197;
     //s = 2625243360874606;
 
+    response = "This is Ayus";
     console.log("ID : " + `"${sender_psid}"`);
     let request_body = {
         "recipient": {
