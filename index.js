@@ -3,6 +3,7 @@ const PAGE_ACCESS_TOKEN = "EAARobDlt2xYBALrIQzmqZCKxZBlBi4Yrt2AjtKjTm62ekqJw8ZA4
 // Imports dependencies and set up http server
 const PAGE_ACCESS_TOKEN1 = "EAAipAcs4AvgBABkyXYqFpzTlpFCFY6wrxyyoA4KJoOTmoBfEh6KmKdsJp3QU37SZCx0XMYxCRXuLBoK8dovRp3itPLUQpOdHwV6ThUTz6dbcp0qOEaXF6";
 const PAGE_ACCESS_TOKEN3 = "e25cece80fde8770a5de54f1da7ee777";
+const PAGE_ACCESS_TOKEN4='b57f9084a1e92aa6621df3d84b1667a9';
 const PAGE_ACCESS_TOKEN2 = "EAAipAcs4AvgBANa4UlFcinWZBIhlUuMHPrcG6VSgpQSRImZBNQH7e1Aeu8oZBMPSeIBb0fbZAM95dioXdNKpFigUD9PCD6iTWAfYEXjjddAtlRKgpAGZAEZBkXXHJaULaJH8dzAQZCkbZCcsRrbYpwma5tWX6LMOcOpZAltFCnYrRVlmvMihBaIw60mmBFGUgYVYZD";
 
 var re = "I SEND BUT NOT CONFORM ";
@@ -188,7 +189,7 @@ function callSendAPI(sender_psid, response) {
 
     request({
         "uri": "https://graph.facebook.com/v2.6/me/messages",
-        "qs": { "access_token": PAGE_ACCESS_TOKEN2 },
+        "qs": { "access_token": PAGE_ACCESS_TOKEN4 },
         "method": "POST",
         "json": request_body
     }, (err, res, body) => {
