@@ -1,13 +1,14 @@
 'use strict';
-const PAGE_ACCESS_TOKEN = "EAARobDlt2xYBALrIQzmqZCKxZBlBi4Yrt2AjtKjTm62ekqJw8ZA46XJMYBLOT5rHdAdFgn4dHOtsjmXHMoIxfqZBVCfZCJGhl0GPZAaEYDSQpIZBpTmYmpRTzWdzm53DqZCckdr4rfCg7x4cu8tKZAQdszIDNbZAFCudw3B9Idh2d4p9BtIDjJZAVLw";
+const PAGE_ACCESS_TOKEN1 = "EAARobDlt2xYBALrIQzmqZCKxZBlBi4Yrt2AjtKjTm62ekqJw8ZA46XJMYBLOT5rHdAdFgn4dHOtsjmXHMoIxfqZBVCfZCJGhl0GPZAaEYDSQpIZBpTmYmpRTzWdzm53DqZCckdr4rfCg7x4cu8tKZAQdszIDNbZAFCudw3B9Idh2d4p9BtIDjJZAVLw";
 // Imports dependencies and set up http server
 const PAGE_ACCESS_TOKEN1 = "EAAipAcs4AvgBABkyXYqFpzTlpFCFY6wrxyyoA4KJoOTmoBfEh6KmKdsJp3QU37SZCx0XMYxCRXuLBoK8dovRp3itPLUQpOdHwV6ThUTz6dbcp0qOEaXF6";
 const PAGE_ACCESS_TOKEN3 = "e25cece80fde8770a5de54f1da7ee777";
 const PAGE_ACCESS_TOKEN4='b57f9084a1e92aa6621df3d84b1667a9';
 const PAGE_ACCESS_TOKEN2 = "EAAipAcs4AvgBANa4UlFcinWZBIhlUuMHPrcG6VSgpQSRImZBNQH7e1Aeu8oZBMPSeIBb0fbZAM95dioXdNKpFigUD9PCD6iTWAfYEXjjddAtlRKgpAGZAEZBkXXHJaULaJH8dzAQZCkbZCcsRrbYpwma5tWX6LMOcOpZAltFCnYrRVlmvMihBaIw60mmBFGUgYVYZD";
+const PAGE_ACCESS_TOKEN5='EAAHSwY9eZADoBAP5z9h7PklK6XdqniWUzPOtGMngmBBQAXRi62uN3RTwsr0FZArPCNUFinQHdAmYlcAyA7cWb9hx9BzwbQx6A2WHXsRE4uSVem5wOqXeLa12vC72EHTfZAT3EwtXI8ooMNwUfMEVpxLg1KWqY5NMPEv02Cp7hdgaZCksBZB5x';
 
 var re = "I SEND BUT NOT CONFORM ";
-
+var TOKEN_ID = PAGE_ACCESS_TOKEN5;
 const
     request = require('request'),
     express = require('express'),
@@ -19,8 +20,17 @@ app.listen(process.env.PORT || 1337, () => console.log('webhook is listening on 
 
 // Accepts POST requests at /webhook endpoint
 app.get('/getName', (req, res) => {
-    res.status(200).send('AYUS  '+PAGE_ACCESS_TOKEN4);
+    res.status(200).send('AYUS  '+TOKEN_ID);
 });
+app.get('/getPreResponse', (req, res) => {
+    res.status(200).send('AYUS  '+re);
+});
+app.post('/setToken', (req, res) => {
+	 let body = req.body;
+	 TOKEN_ID= body.tokenId;
+    res.status(200).send('SET TOKEN  '+TOKEN_ID);
+});
+
 app.post('/facebook', (req, res) => {
 
 	 console.log(" IN POST ");
@@ -48,11 +58,15 @@ app.post('/facebook', (req, res) => {
                 if (webhook_event.message) {
                     console.log("IN  webhook_event.message");
                     //console.log(webhook_event.message);
-                    handleMessage(sender_psid, webhook_event.message);
+                    let m = "This is ayus ";
+                    //handleMessage(sender_psid, webhook_event.message);
+                    handleMessage(sender_psid, m);
                 } else if (webhook_event.postback) {
 
+                	let m = "This is ayus postback ";
                     console.log("IN  webhook_event.postback");
-                    handlePostback(sender_psid, webhook_event.postback);
+                   // handlePostback(sender_psid, webhook_event.postback);
+                    handlePostback(sender_psid, m);
                 }
 
             });
@@ -189,7 +203,7 @@ function callSendAPI(sender_psid, response) {
 
     request({
         "uri": "https://graph.facebook.com/v2.6/me/messages",
-        "qs": { "access_token": PAGE_ACCESS_TOKEN4 },
+        "qs": { "access_token": TOKEN_ID },
         "method": "POST",
         "json": request_body
     }, (err, res, body) => {
