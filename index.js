@@ -21,7 +21,10 @@ app.listen(process.env.PORT || 1337, () => console.log('webhook is listening on 
 
 // Accepts POST requests at /webhook endpoint
 app.get('/getName', (req, res) => {
-    res.status(200).send('AYUS  '+TOKEN_ID);
+    res.status(200).send('AYUS  ');
+});
+app.get('/getToken', (req, res) => {
+    res.status(200).send(TOKEN_ID);
 });
 app.get('/getPreResponse', (req, res) => {
     res.status(200).send(re);
