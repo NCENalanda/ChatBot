@@ -2,7 +2,7 @@
 const PAGE_ACCESS_TOKEN = "EAARobDlt2xYBALrIQzmqZCKxZBlBi4Yrt2AjtKjTm62ekqJw8ZA46XJMYBLOT5rHdAdFgn4dHOtsjmXHMoIxfqZBVCfZCJGhl0GPZAaEYDSQpIZBpTmYmpRTzWdzm53DqZCckdr4rfCg7x4cu8tKZAQdszIDNbZAFCudw3B9Idh2d4p9BtIDjJZAVLw";
 // Imports dependencies and set up http server
 const PAGE_ACCESS_TOKEN1 = "EAAipAcs4AvgBABkyXYqFpzTlpFCFY6wrxyyoA4KJoOTmoBfEh6KmKdsJp3QU37SZCx0XMYxCRXuLBoK8dovRp3itPLUQpOdHwV6ThUTz6dbcp0qOEaXF6";
-const AGE_ACCESS_S = "e25cece80fde8770a5de54f1da7ee777";
+const PAGE_ACCESS_TOKEN3 = "e25cece80fde8770a5de54f1da7ee777";
 const PAGE_ACCESS_TOKEN2 = "EAAipAcs4AvgBANa4UlFcinWZBIhlUuMHPrcG6VSgpQSRImZBNQH7e1Aeu8oZBMPSeIBb0fbZAM95dioXdNKpFigUD9PCD6iTWAfYEXjjddAtlRKgpAGZAEZBkXXHJaULaJH8dzAQZCkbZCcsRrbYpwma5tWX6LMOcOpZAltFCnYrRVlmvMihBaIw60mmBFGUgYVYZD";
 
 var re = "I SEND BUT NOT CONFORM ";
@@ -20,8 +20,9 @@ app.listen(process.env.PORT || 1337, () => console.log('webhook is listening on 
 app.get('/getName', (req, res) => {
     res.status(200).send('AYUS');
 });
-app.post('/webhook', (req, res) => {
+app.post('/facebook', (req, res) => {
 
+	 console.log(" IN POST ");
     // Parse the request body from the POST
     let body = req.body;
     try {
@@ -70,10 +71,10 @@ app.post('/webhook', (req, res) => {
 });
 
 // Adds support for GET requests to our webhook
-app.get('/webhook', (req, res) => {
+app.get('/facebook', (req, res) => {
 
     // Your verify token. Should be a random string.
-    let VERIFY_TOKEN = "<YOUR_VERIFY_TOKEN>"
+    let VERIFY_TOKEN = "innoeye"
 
     // Parse the query params
     let mode = req.query['hub.mode'];
@@ -187,7 +188,7 @@ function callSendAPI(sender_psid, response) {
 
     request({
         "uri": "https://graph.facebook.com/v2.6/me/messages",
-        "qs": { "access_token": PAGE_ACCESS_TOKEN },
+        "qs": { "access_token": PAGE_ACCESS_TOKEN3 },
         "method": "POST",
         "json": request_body
     }, (err, res, body) => {
