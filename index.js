@@ -21,7 +21,7 @@ app.listen(process.env.PORT || 1337, () => console.log('webhook is listening on 
 
 // Accepts POST requests at /webhook endpoint
 app.get('/getName', (req, res) => {
-    res.status(200).send('AYUS  ');
+    res.status(200).send('AYUS');
 });
 app.get('/getToken', (req, res) => {
     res.status(200).send(TOKEN_ID);
@@ -62,15 +62,15 @@ app.post('/facebook', (req, res) => {
                 if (webhook_event.message) {
                     console.log("IN  webhook_event.message");
                     //console.log(webhook_event.message);
-                    let m = "This is ayus ";
-                    //handleMessage(sender_psid, webhook_event.message);
-                    handleMessage(sender_psid, m);
+                    //let m = "This is ayus ";
+                    handleMessage(sender_psid, webhook_event.message);
+                   // handleMessage(sender_psid, m);
                 } else if (webhook_event.postback) {
 
-                	let m = "This is ayus postback ";
+                	//let m = "This is ayus postback ";
                     console.log("IN  webhook_event.postback");
-                   // handlePostback(sender_psid, webhook_event.postback);
-                    handlePostback(sender_psid, m);
+                    handlePostback(sender_psid, webhook_event.postback);
+                    //handlePostback(sender_psid, m);
                 }
 
             });
