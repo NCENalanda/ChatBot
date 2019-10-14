@@ -19,7 +19,7 @@ app.listen(process.env.PORT || 1337, () => console.log('webhook is listening on 
 
 // Accepts POST requests at /webhook endpoint
 app.get('/getName', (req, res) => {
-    res.status(200).send('AYUS');
+    res.status(200).send('AYUS  '+PAGE_ACCESS_TOKEN4);
 });
 app.post('/facebook', (req, res) => {
 
