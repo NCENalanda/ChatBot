@@ -176,7 +176,7 @@ function callSendAPI(sender_psid, response) {
     //s = 2361081954019197;
     //s = 2625243360874606;
 
-    response = "This is Ayus";
+    //response = "This is Ayus";
     console.log("ID : " + `"${sender_psid}"`);
     let request_body = {
         "recipient": {
