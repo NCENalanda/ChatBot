@@ -9,6 +9,7 @@ const PAGE_ACCESS_TOKEN5='EAAHSwY9eZADoBAP5z9h7PklK6XdqniWUzPOtGMngmBBQAXRi62uN3
 
 var re = "I SEND BUT NOT CONFORM ";
 var TOKEN_ID = PAGE_ACCESS_TOKEN5;
+
 const
     request = require('request'),
     express = require('express'),
@@ -23,7 +24,7 @@ app.get('/getName', (req, res) => {
     res.status(200).send('AYUS  '+TOKEN_ID);
 });
 app.get('/getPreResponse', (req, res) => {
-    res.status(200).send('AYUS  '+re);
+    res.status(200).send(re);
 });
 app.post('/setToken', (req, res) => {
 	 let body = req.body;
